@@ -7,7 +7,7 @@ class GoofyController < ActionController::Base
     puts "request url: #{request_url}"
     url = URI.parse(URI.escape(request_url))
     req = Net::HTTP::Get.new(url.to_s)
-    res = `curl #{request_url}`
+    res = `curl #{url.to_s}`
     xml_doc  = Nokogiri::Slop(res)
     render json: {data:  xml_doc.children[0].elements[0].children.to_s}
   end
