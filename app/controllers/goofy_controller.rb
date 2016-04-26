@@ -9,11 +9,7 @@ class GoofyController < ActionController::Base
     req = Net::HTTP::Get.new(url.to_s)
     res = `curl #{url.to_s}`
     xml_doc  = Nokogiri::Slop(res)
-    headers['Access-Control-Allow-Origin'] = '*'
-    headers['Access-Control-Allow-Methods'] = 'POST, PUT, DELETE, GET, OPTIONS'
-    headers['Access-Control-Request-Method'] = '*'
-    headers['Access-Control-Allow-Headers'] = 'Origin, X-Requested-With, Content-Type, Accept, Authorization'
-
+    headers['Access-Control-Allow-Origin'] = "*"
     render json: {data:  xml_doc.children[0].elements[0].children.to_s}
   end
 end
