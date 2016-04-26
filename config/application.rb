@@ -33,6 +33,10 @@ module MySilly
         origins '*'
         resource '*', :headers => :any, :methods => [:get, :post, :options]
       end
+      allow do
+        origins '*'
+        resource 'silly', :headers => :any, :methods => [:get, :post, :options]
+      end
     end
   end
 end
